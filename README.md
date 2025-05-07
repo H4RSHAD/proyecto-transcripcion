@@ -41,7 +41,7 @@ A continuación se detallan los comandos básicos de Git para la gestión del c�
 
     Es importante que los colaboradores trabajen en ramas separadas para evitar conflictos. Aquí te explico cómo hacerlo.
 
-    git branch      | Listar las ramas actuales
+    git branch      |# Listar las ramas actuales
 
 
     git branch tu_nombre_rama  | Crear una nueva rama para tus cambios, tu_nombre_rama
