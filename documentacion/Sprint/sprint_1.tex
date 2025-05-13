@@ -1,0 +1,187 @@
+
+% Mostrar hasta paragraph (cuarto nivel) en la tabla de contenido
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+% Personalizar paragraph para que actúe como una mini-sección
+\titleformat{\paragraph}
+  {\normalfont\normalsize\bfseries} % estilo
+  {\theparagraph}                   % numeración
+  {1em}                             % espacio entre número y título
+  {}                                % código antes del título
+
+% Asegura que los paragraph tengan su propia línea
+\titlespacing*{\paragraph}{0pt}{1.5ex plus 0.5ex minus .2ex}{1em}
+
+%----------------------------------------------------------------------------
+\begin{doublespace} 
+
+    % Definición de colores personalizados
+    \definecolor{lightgray}{rgb}{0.9, 0.9, 0.9}
+    \definecolor{lightblue}{rgb}{0.8, 0.9, 1.0}
+    \definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+    \definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.91}
+
+    \renewcommand{\arraystretch}{1.6} % Espaciado entre filas
+
+
+\subsection{SPRINT N° 1}
+\subsubsection{TAREAS A REALIZAR DURANTE EL SPRINT PLANNING (R-2)}
+
+
+
+
+%DE LA DOCUMENTACION DE SCRUM DEL ING. MARTINEZ
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+% Tabla 1
+\renewcommand{\arraystretch}{1.1} % Espaciado entre filas
+%\setlength{\tabcolsep}{5pt} % Espaciado entre columnas
+
+
+
+
+
+
+
+
+\begin{longtable}{|c|p{15cm}|}
+%\caption{Definiciones iniciales - Sprint 0 (opcional)}\\
+\hline
+\rowcolor{bleudefrance}
+
+\multicolumn{2}{c|}{\color{aliceblue}\Large\textbf{Tareas a realizar durante el Sprint Planning}}\\
+\hline
+\rowcolor{bleudefrance} \color{aliceblue}{\Large\textbf{Id}} & \Large\textbf{\color{aliceblue} Tarea}\\
+\hline
+\endfirsthead
+
+%Esto es para que la tabla se repita en cada pagina, cuando es muy larga
+\rowcolor{bleudefrance}
+\hline 
+\multicolumn{2}{c|}{\color{aliceblue}\textbf{Tareas a realizar durante el Sprint Planning} (continuación)}\\
+\hline
+\rowcolor{bleudefrance} \color{aliceblue}{\Large\textbf{Id}} & \color{aliceblue}\textbf{Tarea}\\
+\hline
+\endhead
+
+a & El Product Owner (PO) propone cómo el producto podría aumentar su valor y utilidad en
+el Sprint actual explicando las Historias de Usuario (HU) candidatas a desarrollar durante
+la ejecución del Sprint (usar las 3C Card, Conversation, Confirmation)\par 
+\color{blue}{Comentario}: \color{bleudefrance}{Aquí acontece la actividad de análisis esencial para comprender los requerimientos,
+por lo que si se ve conveniente y útil generar/actualizar el modelo de contexto (puede ser el diagrama
+general de casos de uso) para tener una vista más abstracta de lo que proporciona las Historias de
+Usuario}\par
+\color{black}{Ver ejemplo de formato para especificar historias de usuario F4}\\
+\rowcolor{lightblue} b & El equipo Scrum define objetivo del Sprint\\
+\hline
+c & Los desarrolladores estiman los Puntos de Historia de Usuario para cada HU para saber
+con cuanto se pueden comprometer a completar en el Sprint (usar Planning Poker) \\
+\hline
+\rowcolor{lightblue} d & Los desarrolladores seleccionan las HU a desarrollar en el presente Sprint\\
+\hline
+e & Los desarrolladores definen la solución en términos de diseño esencial
+    \begin{enumerate}[label=\alph*)]
+        \item Definir/Actualizar el diseño de la arquitectura de software\par
+                Modelos resultados sugeridos:
+                \begin{itemize}
+                    \item Opción 1: Modelos en C4: Niveles 1, 2 y 3
+                    \item Opción 2: Modelos en UML: Diagrama de paquetes y Diagrama de despliegue
+                \end{itemize}
+        \item Definir/Actualizar el diseño de datos\par
+                Modelo resultado:
+                \begin{itemize}
+                    \item Modelo conceptual: Diagrama de clases en UML
+                \end{itemize}
+
+    \end{enumerate} 
+    \color{blue}{Comentario}: \color{bleudefrance}{Aquí acontece actividades diseño esencial para definir la solución y como será
+    implementado el software, también se puede detallar y/o actualizar el diseño durante la ejecución
+    del Sprint (R-3)}\\
+
+\hline
+\rowcolor{lightblue} f & Generar el Sprint Backlog (artefacto), Ver formato ejemplo F5 \\
+\hline
+\rowcolor{bleudefrance} \multicolumn{2}{c|}{} \\
+\hline
+
+\end{longtable}
+
+\clearpage  %nueva pagina
+%TAREAS A REALIZAR DURANTE EL SPRINT PLANNING (R-2)- NUESTRO SCRUM
+
+% Usamos \addcontentsline para incluir el paragraph en el índice
+\paragraph{\Large\textbf {Historia de Usuario (propone el Product Owner)}}
+\addcontentsline{toc}{paragraph}{Historia de Usuario}
+\subfile{1/R-2/a/Historia_de_usuario}
+
+\clearpage  %nueva pagina
+% Usamos \addcontentsline para incluir el paragraph en el índice
+\paragraph{\Large\textbf {Objetivo del Sprint (definido por el Scrum Máster)}}
+\addcontentsline{toc}{paragraph}{Objetivo del Sprint}
+\subfile{1/R-2/b/Objetivo_sprint_1}
+
+%nueva pagina
+\paragraph{\Large\textbf {Planning Poker (estimación de Puntos)}}
+\addcontentsline{toc}{paragraph}{Planning Poker}
+\subfile{1/R-2/c/Planning_poker}
+
+\clearpage  %nueva pagina
+\paragraph{\large\textbf {SELECCIÓN DE HISTORIAS DE USUARIOS (desarrolladores)}}
+\addcontentsline{toc}{paragraph}{selecciona de Historias de Usuario}
+\subfile{1/R-2/d/HU_a_desarrollar}
+
+\clearpage  %nueva pagina
+\paragraph{\Large\textbf {DISEÑO DE LA SOLUCIÓN (desarrolladores)}}
+\addcontentsline{toc}{paragraph}{Diseño de la Solución}
+\subfile{1/R-2/e/Diseño_solucion}
+
+
+
+
+
+%---------------------------------------------------------------------------
+
+\clearpage  %nueva pagina
+%TAREAS A REALIZAR DURANTE EL SPRINT PLANNING (R-3)- NUESTRO SCRUM
+
+\subsubsection{ACTIVIDADES A REALIZAR DURANTE LA EJECUCION DEL SPRINT (R-3)}
+El propósito de la ejecución del Sprint es que el equipo de desarrollo trabaje en las tareas del
+Sprint Backlog para cumplir con el objetivo del Sprint y entregar un incremento de software
+potencialmente entregable. Durante esta fase, el equipo se enfoca en consolidar la solución,
+implementar, probar y refinar las funcionalidades comprometidas, asegurando que se cumpla
+con los criterios de calidad y esté listo para ser revisado en el Sprint Review.
+
+\begin{enumerate}[label=\alph*)]
+    \item \textbf{Cada desarrollador selecciona desde el Sprint Backlog que tareas realizará}\par
+    Ejemplo de tareas para el desarrollo en la iteración del Sprint para generar un incremento.
+    \item \textbf{Generación del incremento y despliegue}\par
+    A la finalización de la ejecución del sprint se debe generar el incremento (artefacto)
+    correspondiente al sprint, integrando el incremento resultante a la anterior para asegurarse
+    que funcionan correctamente juntos, tomar en cuenta consideraciones siguientes:
+    \begin{itemize}
+        \item El incremento debe cumplir con el criterio de “Definition of Done” (DoD)
+        \item Asegurarse de que todas las ramas de código estén integradas en la rama principal (main
+        o master)
+        \item Asegurarse de que el código siga las mejores prácticas de estilo y estándares del equipo.
+        \item Preparar/monitorear el entorno de producción
+        \item Considerar usar Contenedores (docker), automatizar el despliegue, uso de pipelines
+        CI/CD (integración continua/despliegue continuo). Ejem. GitHub Actions, Jenkins, GitLab.
+    \end{itemize}
+\end{enumerate}
+%---------------------------------------------------------------------------
+\subsubsection{SCRUM DIARIO (DAILY SCRUM)}
+
+
+
+
+%---------------------------------------------------------------------------
+\subsubsection{REVISION DE SPRINT (R-4)}
+
+
+
+
+%---------------------------------------------------------------------------
+\subsubsection{RETROSPECTIVA DE SPRINT (R-5)}
+
+
+\end{doublespace}

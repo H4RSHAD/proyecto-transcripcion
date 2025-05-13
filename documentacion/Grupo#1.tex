@@ -1,0 +1,160 @@
+% En documento-principal.tex
+\documentclass[a4paper]{article} % Formato de plantilla a utilizar
+\usepackage[utf8]{inputenc}
+\usepackage{subfiles} %para agregar otros documentos 
+\usepackage[spanish]{babel}
+\usepackage{setspace}               % Paquete para cambiar el interlineado
+\usepackage[margin=2cm,top=2cm,includefoot]{geometry} % Margenes del documento
+\usepackage{graphicx}               % Para insertar una imagen
+\usepackage[table,xcdraw]{xcolor}   % Para detectar los colores
+\usepackage[most]{tcolorbox}        % Para inserción de cuadros en portada y otros
+\usepackage{fancyhdr}               % Definir el estilo de la pagina
+\usepackage[hidelinks]{hyperref}    % Gestión de hipervinculos
+%-------------------------------
+\usepackage{enumitem} %para numerar con letras del abecedario
+\usepackage{longtable}              % Para tablas largas
+\usepackage{mdframed}            % Para crear cuadros de texto
+\usepackage{url}
+\usepackage{hyperref}               %si quieres enlaces clicables.
+\usepackage{array}  % Para definir columnas con formato especial
+
+
+\usepackage{titlesec}     % Personalizar secciones
+\usepackage{tocloft}      % Mejorar el índice (opcional)
+
+% Declarar Colores
+\definecolor{titulocolor}{HTML}{ab1e00}
+%colores https://latexcolor.com/
+
+% Declaración de variables globales
+\newcommand{\logoportada}{img/Escudo_FICCT.png}
+\newcommand{\logoqr}{img/qr.png}
+
+% Adicional
+%----------------ENCABEZADO--------------------
+\setlength{\headheight}{40.2pt}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\textbf{INGENIERIA DE SOFTWARE I - SC}}\rhead{\textbf{Proyecto Final - Grupo N°1}}
+\renewcommand{\headrulewidth}{2pt}
+\fancyfoot[R]{\textbf{Página \thepage }} %  |\pageref{LastPage}} 
+%-------------Fin ENCABEZADO ---------------------
+
+
+% Comienzo del documento
+\begin{document}
+    %\cfoot{Página \thepage\|\thepage} % para que se agrege los numeros de paginas
+
+    % -----------------------------CARATULA-----------------------------------------
+    \begin{titlepage}
+        \centering
+        \Large\textbf{UNIVERSIDAD AUTONOMA 
+        GABRIEL RENE MORENO}\par\vspace{1.5cm}
+
+        \centering
+        \includegraphics[width=0.4\textwidth]{\logoportada}\par\vspace{0.3cm}
+        
+        {\huge\bfseries\textcolor{titulocolor}{Grupo N°1}}\par\vspace{0.1cm}
+        
+        \begin{tcolorbox}[colback=red!5!white,colframe=red!75!black]
+            \centering
+            \Large \textbf{Sistema Avanzado de Transcripción y Traducción}\par
+            \Large \textbf{Multilingue para Eventos Presenciales y Multimedia con Inteligencia Artificial }\par
+            
+        \end{tcolorbox}\par\vspace{1cm}
+
+        % Definición de colores personalizados
+        \definecolor{lightgray}{rgb}{0.9, 0.9, 0.9}
+        \definecolor{lightblue}{rgb}{0.8, 0.9, 1.0}
+        \definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+        \definecolor{bleudefrance}{rgb}{0.19, 0.55, 0.91}
+ 
+        \hfill  %debes de ajustar el espacio entre la tabla y el QR, no separarlo
+        \begin{minipage}{0.79\textwidth} % 60% del ancho para la información
+                    % Aquí va la tabla de los integrantes
+            \begin{flushleft}
+                
+                \begin{longtable}[c]{|l|c|}
+                    \hline
+                    \rowcolor{bleudefrance} \color{aliceblue}\textbf{Nombre} & \color{aliceblue}\textbf{Registro} \\
+                    \hline
+                    \endfirsthead
+                    
+                    
+                    \hline
+                                            {GUZMAN HONOR WILSON} &             {214143325} \\
+                    \rowcolor{lightblue}    {MONTALVAN MEDINA KAREN ANDREA} &   {211046604} \\
+                                            {RIBERA SAAVEDRA FRANZ LEONARDO} &  {210205792} \\
+                    \rowcolor{lightblue}    {RODRIGUEZ VALENCIA JOSE LUIS} &    {213115824} \\
+                                            {SAGREDO CORDOVA SIMON} &           {215049594} \\
+                    \rowcolor{lightblue}    {SOSSA PESOA JUAN ANTONIO} &        {210007664} \\
+                    
+                    \hline
+
+                    \end{longtable}
+            \end{flushleft}
+        \end{minipage}
+        \hfill  %debes de ajustar el espacio entre la tabla y el QR, no separarlo
+        \begin{minipage}{0.20\textwidth}  % 30% del ancho para la imagen QR
+            \begin{flushright}
+                \includegraphics[width=\linewidth]{\logoqr}  % Cambia "qr_code.png" por tu archivo de imagen QR
+            \end{flushright}
+        \end{minipage}
+
+
+        \vspace{1cm}  % Espacio entre el bloque anterior y el siguiente texto
+        \Large\textbf{Santa Cruz - Bolivia}\par
+
+    \end{titlepage}
+    % ----------------------------FIN CARATULA--------------------------------
+
+    %--------------------------------------------------------------------------
+    % Comienzo del INDICE
+    \clearpage  % nueva pagina
+    \begin{doublespace}     %doble espaciado
+    \tableofcontents % Tabla de contenido, se crean automaticamente gracias a las paqueterias
+    \end{doublespace}
+    \clearpage  %nueva pagina
+    %-----------------------------Fin del INDICE-----------------------------
+
+
+    \hfill
+    \vfill
+    %  Centrar el texto con letras grandes
+    \begin{center}
+        \Huge \textbf{SPRINT 0 }\par\vspace{1cm}
+        \huge \textbf{preparar el entorno y sentar las bases para el desarrollo del
+        proyecto}
+    \end{center}
+    \vfill
+    \hfill
+
+
+
+
+%###########################-- INICIO DEL DOCUMENTO --##############################
+\clearpage  %nueva pagina
+% Sprint 0
+\subfile{Sprint/sprint_0.tex}
+
+\clearpage  %nueva pagina
+
+\hfill
+\vfill
+%  Centrar el texto con letras grandes
+\begin{center}
+    \Huge \textbf{SPRINT 1 }\par\vspace{1cm}
+    \huge \textbf{Iniciar el desarrollo del proyecto}
+\end{center}
+\vfill
+\hfill
+
+
+\clearpage  %nueva pagina
+% Sprint 1
+
+\subfile{Sprint/sprint_1.tex}
+
+
+\end{document}
+%###########################-- Fin del DOCUMENTO --##############################
