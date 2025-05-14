@@ -1,7 +1,6 @@
 # Proyecto Transcripcion
-## Introducción
-"Sistema avanzado de transcripción y traducción multilingüe para eventos presenciales y archivos multimedia con Inteligencia Artificial"
-Este proyecto tiene como objetivo desarrollar una plataforma capaz de transcribir y traducir en tiempo real contenido audiovisual y de eventos presenciales mediante tecnologías de inteligencia artificial.
+![](./documentacion/img/caratula.png)
+<br/><br/>
 
 # Estructura del proyecto
 Descripción general de la estructura de carpetas y archivos del proyecto (puedes agregar más detalles según sea necesario).
@@ -19,11 +18,6 @@ A continuación se detallan los comandos básicos de Git para la gestión del c�
 
     git config --global user.name "TuNombreDeUsuario"
   
-    git status
-
-    git add .
-
-    git commit -m "comentario de lo que realizaste"
 
     # Conectar tu repositorio local con GitHub, agregamos el repositorio remoto de GitHub (solo la primera vez).
 
@@ -31,32 +25,40 @@ A continuación se detallan los comandos básicos de Git para la gestión del c�
     ```
 2. **Subir los cambios a Github**:
    ```bash
-    # para el master:
-    subir los cambios a la rama master del proyecto de github
-
-    git push -u origin master
-
+    # Actualizar la rama principal para traer los ultimos cambios antes de enviar los tuyos.
+    git checkout master
+    git pull origin master
 
     # Colaboradores: Trabajando con Ramas
+    Es importante que los colaboradores trabajen en ramas separadas para evitar conflictos
 
-    Es importante que los colaboradores trabajen en ramas separadas para evitar conflictos. Aquí te explico cómo hacerlo.
+    git checkout -b feature/historia-usuario     |  #Crear su rama para la historia de usuario asignada 
+    
+    git push -u origin feature/registrar-usuario | # Sube la rama al repositorio, la primera vez se usa -u origin para vincular el local con el remoto
 
-    git branch      |# Listar las ramas actuales
-
-
-    git branch tu_nombre_rama  | Crear una nueva rama para tus cambios, tu_nombre_rama
-
-
-    git checkout tu_nombre_rama  | Cambiar a una rama específica, tu_nombre_rama
-
-
-    git push -u origin nombre_de_tu_rama   | Subir tus cambios a tu rama en GitHub en el proyecto de github
+    # Cada integrante trabaja en su rama y sube su avance a su misma rama
+    git add .
+    git commit -m "Implementación historia Usuario"
+    git push          | # tu rama local queda vinculada a la rama remota, y ya no necesitarás especificarla cada vez.
     ```
 3. **Mantener tu repositorio actualizado**:
     ```bash
     # Si otros colaboradores han hecho cambios en el repositorio, deberás actualizar tu copia local antes de poder subir tus propios cambios.
+    
+    git checkout master | # cambia a la rama master
 
     git pull origin master  | Traer los últimos cambios de la rama principal (master):
 
-    git pull origin nombre_de_rama | Traer los últimos cambios de una rama específica:
+    git checkout feature/historia-usuario | #Cambia a tu rama de local o de trabajo
+
+    git merge master | # integra los cambios de master en tu rama local
+
+    ```
+4. **Solo el master hace esto**:
+    subir los cambios a la rama master del proyecto puedes hacerlo desde github, o trambien puede por comando
+    ```bash
+    git checkout master
+    git pull origin master
+    git merge feature/historia-usuario | #en la rama master se integra la historia de usuario asignada
+    git push -u origin master
     ```
