@@ -1,33 +1,48 @@
 #!/bin/bash
-# Este script sincroniza tu rama con la rama main del repositorio.
-# Guárdalo como sync_with_main.sh, dale permisos solo la primera vez: 
-# chmod +x sync_with_main.sh
 
-# Uso:
-# ./sync_with_main.sh feature/aqui-tu-historia-usuario
+# sync_with_master.sh
+# Este script sincroniza una rama con master y permite ingresar un mensaje de commit personalizado.
+
+# USO:
+# ./sync_with_master.sh nombre-de-tu-rama "Mensaje opcional de commit"
+# Si no ingresas mensaje, se te pedirá escribirlo.
+
+# -----------------------------
 
 BRANCH=$1
 COMMENT=$2
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # Sin color
+
 if [ -z "$BRANCH" ]; then
-  echo "❌ Debes especificar tu rama. Ejemplo: ./sync_with_main.sh feature/registrar-usuario"
+  echo -e "${RED}❌ Debes especificar tu rama. Ejemplo: ./sync_with_master.sh feature/registrar-usuario${NC}"
   exit 1
 fi
 
-echo "🔄 Guardando cambios locales..."
+# Si no se proporcionó mensaje, pedirlo interactivamente
+if [ -z "$COMMENT" ]; then
+  read -p "📝 Ingresa el mensaje de commit: " COMMENT
+fi
+
+echo -e "${GREEN}🔄 Guardando cambios locales...${NC}"
 git add .
-git commit -m "WIP: cambios antes de merge con master" || echo "✅ Sin cambios nuevos."
 
-echo "📥 Cambiando a main y actualizando..."
-git checkout main
-git pull origin main
+# Commit con mensaje personalizado o por defecto si no hay cambios
+git commit -m "$COMMENT" || echo -e "${GREEN}✅ No hay cambios para hacer commit.${NC}"
 
-echo "🔁 Volviendo a tu rama $BRANCH..."
-git checkout $BRANCH
+echo -e "${GREEN}📥 Cambiando a master y actualizando...${NC}"
+git checkout master || { echo -e "${RED}❌ No se pudo cambiar a master.${NC}"; exit 1; }
+git pull origin master || { echo -e "${RED}❌ No se pudo actualizar master desde origin.${NC}"; exit 1; }
 
-echo "🔗 Haciendo merge con main..."
-git merge main
+echo -e "${GREEN}🔁 Volviendo a tu rama $BRANCH...${NC}"
+git checkout "$BRANCH" || { echo -e "${RED}❌ No se pudo cambiar a la rama $BRANCH.${NC}"; exit 1; }
 
-echo "📤 Subiendo cambios a tu rama..."
-git push
+echo -e "${GREEN}🔗 Haciendo merge con master...${NC}"
+git merge master || { echo -e "${RED}❌ Conflictos en el merge. Resuélvelos manualmente antes de continuar.${NC}"; exit 1; }
 
-echo "✅ ¡Listo! Tu rama $BRANCH está actualizada con main."
+echo -e "${GREEN}📤 Subiendo cambios a tu rama...${NC}"
+git push || { echo -e "${RED}❌ No se pudo hacer push a $BRANCH.${NC}"; exit 1; }
+
+echo -e "${GREEN}✅ ¡Listo! Tu rama $BRANCH está actualizada con master.${NC}"
